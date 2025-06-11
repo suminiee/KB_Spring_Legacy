@@ -6,6 +6,7 @@ import org.example.springtest.dto.member.MemberDTO;
 import java.util.List;
 
 public interface MemberService {
-    public List<MemberDTO> getMemberList();
+    List<MemberDTO> getMemberList();
+    MemberDTO addMember(String name, String email);
 
 }

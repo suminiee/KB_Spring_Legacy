@@ -9,8 +9,10 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
 @EnableWebMvc
-@ComponentScan(basePackages = {"org.example.springtest"})
+@ComponentScan(basePackages = {"org.example.springtest.controller"})
 public class ServletConfig implements WebMvcConfigurer {
+    //web과 통신에 관련된 Bean은 ServletConfig에서 등록합니다.
+    //@Controller, @RestController
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry

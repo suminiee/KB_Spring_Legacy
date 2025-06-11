@@ -1,4 +1,4 @@
-package org.example.springtest.controller.member;
+package org.example.springtest.controller.member.v1;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -14,9 +14,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class MemberListControllerV1 {
     private final MemberService memberService;
 
-//    public MemberListControllerV1 memberListControllerV1(MemberServiceImplV1 memberService) {
-//        this.memberService = memberService;
-//    }
+    //스프링에 의한 의존성 주입이 아닌 직접 구현한 싱글톤의 인스턴스를 받아서 사용
+//    private final MemberService  memberService2 = MemberServiceImplV1.getInstance();
 
     @GetMapping("/member/list")
     public String memberList(Model model) {

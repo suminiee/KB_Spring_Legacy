@@ -1,4 +1,4 @@
-package org.example.springtest.controller.member;
+package org.example.springtest.controller.member.v1;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
