@@ -12,4 +12,5 @@
 
     <h3>POST</h3>
     <a href="/post/list">게시판 글 목록</a>
+    <a href="/post/compare">DB 속도 비교</a>
 </div>

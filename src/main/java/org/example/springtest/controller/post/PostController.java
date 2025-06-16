@@ -33,6 +33,13 @@ public class PostController {
         return "redirect:/post/list";
     }
 
+    @GetMapping("/search")
+    public String searchList(@RequestParam("title") String title, @RequestParam("content") String content, Model model) {
+        log.info("-----------------> 게시글 검색 기능 호출, /post/search");
+        model.addAttribute("postList", postService.findByCond(title, content));
+        return "post/list";
+    }
+
     @GetMapping("/new")
     public String getNew() {
         return "post/post-new";
@@ -42,5 +49,19 @@ public class PostController {
     public String addNew(NewPostDTO newPostDTO) {
         postService.save(newPostDTO);
         return "redirect:/post/list";
+    }
+
+    @GetMapping("/compare")
+    public String compare(Model model) {
+        log.info("=================> DB 비교 기능 호출, /post/compare");
+
+        int count = 1000;
+
+        postService.resetAndGeneratePosts(count);
+        model.addAttribute("count", count);
+        model.addAttribute("mysqlTime", postService.testMysqlReadTime(count));
+        model.addAttribute("redisTime", postService.testRedisReadTime(count));
+
+        return "post/compare";
     }
 }

@@ -11,8 +11,38 @@
         delete from posts
         where id=#{id};
     </delete>
+    <select id="findByCond" resultType="org.example.springtest.dto.post.PostDTO">
+        SELECT id, title, content
+        FROM posts
+        <where>
+            <if test="title != null and title != ''">
+                AND title LIKE CONCAT('%', #{title}, '%')
+            </if>
+            <if test="content != null and content != ''">
+                AND content LIKE CONCAT('%', #{content}, '%')
+            </if>
+        </where>
+    </select>
     <insert id="save" parameterType="org.example.springtest.domain.post.PostEntity">
         INSERT INTO posts (title, content)
         VALUES (#{title}, #{content});
     </insert>
+
+
+
+    <delete id="deleteAll">
+        DELETE FROM posts2
+    </delete>
+
+    <insert id="saveForTest" useGeneratedKeys="true" keyProperty="id">
+        insert into posts2 (title, content)
+        values (#{title}, #{content});
+    </insert>
+
+    <select id="findById" resultType="org.example.springtest.dto.post.PostDTO">
+        SELECT id, title, content
+        FROM posts2
+        WHERE id = #{id}
+    </select>
+
 </mapper>

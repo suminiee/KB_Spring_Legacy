@@ -17,7 +17,8 @@ public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitiali
     @Override
     protected Class<?>[] getServletConfigClasses() {
         return new Class[]{
-                ServletConfig.class
+                ServletConfig.class,
+                RedisConfig.class //여기(RedisConfig file)에 있는 설정 정보들을 레거시에 적용***
         };
     }
 
