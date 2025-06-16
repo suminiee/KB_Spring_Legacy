@@ -26,8 +26,8 @@ import static org.junit.jupiter.api.Assertions.*;
 @PropertySource("classpath:application.properties")
 class RootConfigTest {
 
-//    @Autowired
-//    private SqlSessionFactory sqlSessionFactory;
+    @Autowired
+    private SqlSessionFactory sqlSessionFactory;
 
     @Autowired
     private DataSource dataSource;
@@ -43,18 +43,18 @@ class RootConfigTest {
         }
     }
 
-//    @Test
-//    void sqlSessionFactory() {
-//        try (SqlSession session = sqlSessionFactory.openSession();
-//             Connection con = session.getConnection()) {
-//            log.info("SqlSession: {}", session);
-//            log.info("Connection: {}", con);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
+    @Test
+    void sqlSessionFactory() {
+        try (SqlSession session = sqlSessionFactory.openSession();
+             Connection con = session.getConnection()) {
+            log.info("SqlSession: {}", session);
+            log.info("Connection: {}", con);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-//    @Test
-//    void transactionManager() {
-//    }
+    @Test
+    void transactionManager() {
+    }
 }

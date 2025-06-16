@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.springtest.mapper.MemberMapper">
+    <select id="findAll" resultType="MemberEntity">
+        select *
+        from member;
+    </select>
+    <select id="findTwo" resultType="MemberEntity">
+        select *
+        from member
+                 LIMIT 2;
+    </select>
+    <select id="save" parameterType="org.example.springtest.domain.member.MemberEntity">
+        INSERT INTO member (id, name, email, grade, asset)
+        VALUES (#{id}, #{name}, #{email}, #{grade}, #{asset});
+    </select>
+</mapper>

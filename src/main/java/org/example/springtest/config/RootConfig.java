@@ -4,6 +4,7 @@ import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
@@ -18,6 +19,7 @@ import javax.sql.DataSource;
 @Configuration
 @PropertySource({"classpath:/application.properties"})
 @ComponentScan(basePackages = {"org.example.springtest"})
+@MapperScan(basePackages = {"org.example.springtest.mapper"})
 public class RootConfig {
     //application 전역에 필요한 Bean은 RootConfig에서 등록
     //@Service, @Repository, @Component 등
@@ -40,18 +42,18 @@ public class RootConfig {
     @Autowired
     ApplicationContext applicationContext;
 
-//    @Bean
-//    public SqlSessionFactory sqlSessionFactory() throws Exception {
-//        SqlSessionFactoryBean sqlSessionFactory = new SqlSessionFactoryBean();
-//        sqlSessionFactory.setConfigLocation(
-//                applicationContext.getResource("classpath:/mybatis-config.xml"));
-//        sqlSessionFactory.setDataSource(dataSource());
-//        return (SqlSessionFactory) sqlSessionFactory.getObject();
-//    }
-//
-//    @Bean
-//    public DataSourceTransactionManager transactionManager(){
-//        DataSourceTransactionManager manager = new DataSourceTransactionManager(dataSource());
-//        return manager;
-//    }
+    @Bean
+    public SqlSessionFactory sqlSessionFactory() throws Exception {
+        SqlSessionFactoryBean sqlSessionFactory = new SqlSessionFactoryBean();
+        sqlSessionFactory.setConfigLocation(
+                applicationContext.getResource("classpath:/mybatis-config.xml"));
+        sqlSessionFactory.setDataSource(dataSource());
+        return (SqlSessionFactory) sqlSessionFactory.getObject();
+    }
+
+    @Bean
+    public DataSourceTransactionManager transactionManager(){
+        DataSourceTransactionManager manager = new DataSourceTransactionManager(dataSource());
+        return manager;
+    }
 }

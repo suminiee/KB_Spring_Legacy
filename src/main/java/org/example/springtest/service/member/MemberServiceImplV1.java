@@ -3,18 +3,18 @@ package org.example.springtest.service.member;
 import lombok.RequiredArgsConstructor;
 import org.example.springtest.domain.member.MemberEntity;
 import org.example.springtest.dto.member.MemberDTO;
-import org.example.springtest.repository.member.MemberRepositoryV1;
+import org.example.springtest.repository.member.v1.MemberRepositoryV1;
+import org.example.springtest.repository.member.v3.MemberRepositoryV3;
 import org.springframework.stereotype.Service;
 
-import java.lang.reflect.Member;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class MemberServiceImplV1 implements MemberService{
-    private static MemberServiceImplV1 instance;
-    private final MemberRepositoryV1 memberRepositoryV1;
+//    private static MemberServiceImplV1 instance;
+    private final MemberRepositoryV3 memberRepositoryV3;
 
 //    public MemberServiceImplV1(MemberRepositoryV1 memberRepositoryV1) {
 //        this.memberRepositoryV1 = memberRepositoryV1;
@@ -35,7 +35,7 @@ public class MemberServiceImplV1 implements MemberService{
 
 
     public List<MemberDTO> getMemberList() {
-        List<MemberEntity> entityList = memberRepositoryV1.getMemberList();
+        List<MemberEntity> entityList = memberRepositoryV3.findAll();
         List<MemberDTO> dtoList = new ArrayList<>();
 
         for (MemberEntity entity : entityList) {
@@ -48,13 +48,13 @@ public class MemberServiceImplV1 implements MemberService{
     }
 
     @Override
-    public MemberDTO addMember(String name, String email) {
+    public void addMember(String name, String email) {
         MemberEntity newMember = new MemberEntity();
+        newMember.setId(4L);
         newMember.setName(name);
         newMember.setEmail(email);
         newMember.setGrade("아이언");
         newMember.setAsset(1345367654L);
-        memberRepositoryV1.save(newMember);
-        return null;
+        memberRepositoryV3.save(newMember);
     }
 }

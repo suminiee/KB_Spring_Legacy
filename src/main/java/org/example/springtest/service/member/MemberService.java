@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface MemberService {
     List<MemberDTO> getMemberList();
-    MemberDTO addMember(String name, String email);
+    void addMember(String name, String email);
 
 }

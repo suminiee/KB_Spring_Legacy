@@ -9,4 +9,7 @@
     <a href="/">Home</a>
     <a href="/member/v2/list">회원 목록</a>
     <a href="/member/v2/add">회원 추가</a>
+
+    <h3>POST</h3>
+    <a href="/post/list">게시판 글 목록</a>
 </div>
