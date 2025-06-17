@@ -1,4 +1,4 @@
-package org.example.springtest.controller.post;
+package org.example.springtest.controller.post.v1;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
