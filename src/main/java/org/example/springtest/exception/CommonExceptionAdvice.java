@@ -2,15 +2,23 @@ package org.example.springtest.exception;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
+import javax.persistence.EntityNotFoundException;
+
 @ControllerAdvice
 @Slf4j
 public class CommonExceptionAdvice {
+
+    @ExceptionHandler(EntityNotFoundException.class)
+    public ResponseEntity<String> notFoundTodo(EntityNotFoundException e) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+    }
     @ExceptionHandler(NoHandlerFoundException.class) //이 예외가 발생할 떄
     @ResponseStatus(HttpStatus.NOT_FOUND) //이 응답을 내려준다
     public String handle404(NoHandlerFoundException e) {

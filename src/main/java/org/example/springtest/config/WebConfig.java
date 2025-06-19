@@ -11,16 +11,18 @@ public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitiali
     @Override
     protected Class<?>[] getRootConfigClasses() {
         return new Class[]{
-                RootConfig.class
+                RootConfig.class,
+                JpaConfig.class, //jpa 레거시에 적용
+                RedisConfig.class //여기(RedisConfig file)에 있는 설정 정보들을 레거시에 적용***
         };
     }
 
     @Override
-    protected Class<?>[] getServletConfigClasses() {
+    protected Class<?>[] getServletConfigClasses() { //서버 관련
         return new Class[]{
                 ServletConfig.class,
-                RedisConfig.class, //여기(RedisConfig file)에 있는 설정 정보들을 레거시에 적용***
                 SwaggerConfig.class //SwaggerConfig에 있는 설정 정보들을 레거시에 적용
+
         };
     }
 

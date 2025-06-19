@@ -1,0 +1,23 @@
+package org.example.springtest.domain.todo;
+
+import lombok.*;
+
+import javax.persistence.*;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "todo")
+public class Todo {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @Column(name = "todo", nullable = false)
+    private String todo;
+
+    @Column(name = "done", nullable = false)
+    private Boolean done = false;
+}
