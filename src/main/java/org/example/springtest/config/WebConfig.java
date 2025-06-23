@@ -1,5 +1,6 @@
 package org.example.springtest.config;
 
+import org.example.springtest.security.SecurityConfig;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
@@ -13,7 +14,8 @@ public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitiali
         return new Class[]{
                 RootConfig.class,
                 JpaConfig.class, //jpa 레거시에 적용
-                RedisConfig.class //여기(RedisConfig file)에 있는 설정 정보들을 레거시에 적용***
+                RedisConfig.class, //여기(RedisConfig file)에 있는 설정 정보들을 레거시에 적용***
+                SecurityConfig.class
         };
     }
 

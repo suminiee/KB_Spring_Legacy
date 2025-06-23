@@ -14,6 +14,7 @@ ext {
     junitVersion = '5.10.2'
     lombokVersion = '1.18.30'
     springVersion = '5.3.37'
+    springSecurityVersion = '5.8.13'
 }
 
 sourceCompatibility = '1.8'
@@ -32,6 +33,15 @@ dependencies {
 
     //Serializable - 직렬화
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.5'
+
+    // Security
+    implementation("org.springframework.security:spring-security-web:${springSecurityVersion}")
+    implementation("org.springframework.security:spring-security-config:${springSecurityVersion}")
+    implementation("org.springframework.security:spring-security-core:${springSecurityVersion}")
+    implementation("org.springframework.security:spring-security-taglibs:${springSecurityVersion}")
+
+    // Encryption
+    implementation 'org.springframework.security:spring-security-crypto'
 
     // Servlet
     compileOnly('javax.servlet:javax.servlet-api:4.0.1')
