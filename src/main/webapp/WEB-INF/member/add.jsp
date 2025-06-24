@@ -7,6 +7,7 @@
 <body>
 <h1>회원 추가 페이지</h1>
 <form action="/member/add" method="post">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
     이름 : <input type="text" id="name" name="name" required /><br />
     이메일 : <input type="text" id="email" name="email" required /><br />
     <br />

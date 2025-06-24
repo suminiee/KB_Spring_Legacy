@@ -81,6 +81,7 @@
 <%@include file="/WEB-INF/header.jsp"%>
 <h1>글 작성</h1>
 <form action="/post/new" method="post">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
     <label for="title">제목</label>
     <input type="text" id="title" name="title" required>
 

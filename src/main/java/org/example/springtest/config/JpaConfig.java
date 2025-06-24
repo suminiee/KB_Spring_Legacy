@@ -18,7 +18,7 @@ import java.util.Properties;
 @Configuration
 @EnableTransactionManagement //트랜잭션 적용
 @PropertySource("classpath:application.properties")
-@EnableJpaRepositories(basePackages = "org.example.springtest.domain")
+@EnableJpaRepositories(basePackages = "org.example.springtest.repository")
 public class JpaConfig {
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource) {

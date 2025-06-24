@@ -92,6 +92,7 @@
 <h1>글 목록</h1>
 
 <form action="/post/search" method="get">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
     <label for="title">제목 검색</label>
     <input type="text" name="title" id="title" placeholder="제목에서 찾을 단어 입력">
     <label for="content">/ 내용 검색</label>
@@ -110,17 +111,20 @@
     </tr>
     </thead>
     <tbody>
-    <c:forEach var="post" items="${postList}">
+    <c:forEach var="post" items="${postList}" >
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
         <tr>
             <td>${post.id}</td>
             <td>${post.title}</td>
             <td>${post.content}</td>
             <td>
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                 <form action="/post/v1/update" method="get" style="display:inline;">
                     <input type="hidden" name="id" value="${post.id}">
                     <input type="submit" value="수정" class="update-button">
                 </form>
                 <form action="/post/delete" method="post" style="display:inline;">
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                     <input type="hidden" name="id" value="${post.id}">
                     <input type="submit" value="삭제" class="delete-button">
                 </form>
@@ -130,6 +134,6 @@
     </tbody>
 </table>
 
-<a class="new-button" href="/post/new">새 글 작성하기</a>
+<a class="new-button" href="/post/new" >새 글 작성하기</a>
 </body>
 </html>

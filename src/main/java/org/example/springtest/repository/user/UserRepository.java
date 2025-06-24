@@ -1,0 +1,10 @@
+package org.example.springtest.repository.user;
+
+import org.example.springtest.domain.user.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.Optional;
+
+public interface UserRepository extends JpaRepository<User, Integer> {
+    Optional<User> findByUsername(String username);
+}
