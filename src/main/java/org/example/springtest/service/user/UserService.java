@@ -17,7 +17,6 @@ public class UserService {
     private final BCryptPasswordEncoder passwordEncoder; //IOC spring이 알아서 주입시켜줌 new 안써도
 
     public void save(User user) {
-        user.setRole("ROLE_MEMBER");
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
     }
