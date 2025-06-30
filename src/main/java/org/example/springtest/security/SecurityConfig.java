@@ -49,7 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests()
                 .antMatchers("/").permitAll()
-                .antMatchers("/user/**").permitAll()
+                .antMatchers("/user/**", "/oauth/**").permitAll()
                 .antMatchers("/auth/admin").hasRole("ADMIN") //hasRole을 쓰면 ROLE_안써도 됨 -> 시큐리티가 알아서 붙여서 비교함
                 .antMatchers("/auth/member").hasAnyRole("ADMIN", "MEMBER")
                 .antMatchers("/auth/**").authenticated()
