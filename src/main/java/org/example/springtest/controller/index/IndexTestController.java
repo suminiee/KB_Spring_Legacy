@@ -97,8 +97,8 @@ public class IndexTestController {
         return ResponseEntity.ok(result);
     }
 
-//    // 나이트메어 테스트 데이터 생성
-//    // GET, http://localhost:8080/index-test/nightmare/generate-data
+//     나이트메어 테스트 데이터 생성
+//     GET, http://localhost:8080/index-test/nightmare/generate-data
     @GetMapping("/nightmare/generate-data")
     public ResponseEntity<String> generateNightmareData(@RequestParam(defaultValue = DATA_COUNTS) int count) {
         long excutionTime = nightmareService.generateTestData(100000);
