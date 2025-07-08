@@ -103,7 +103,7 @@ public class IndexTestController {
     public ResponseEntity<String> generateNightmareData(@RequestParam(defaultValue = DATA_COUNTS) int count) {
         long excutionTime = nightmareService.generateTestData(100000);
 
-        String message = "나이트메어 샘플 데이터 저장 완료!, 실행 시간 - " + excutionTime + " ms";
+        String message = "나이트메어 샘플 데이터 저장 완료!!!!!, 실행 시간 - " + excutionTime + " ms";
         return ResponseEntity.ok(message);
     }
 }
